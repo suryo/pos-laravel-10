@@ -4,8 +4,12 @@
 <div class="row">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header bg-white">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
                 <h4 class="mb-0">Products</h4>
+                <form action="{{ route('pos.index') }}" method="GET" class="d-flex">
+                    <input type="text" name="search" class="form-control me-2" placeholder="Search..." value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-outline-primary btn-sm">Search</button>
+                </form>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -28,6 +32,9 @@
                         </div>
                     </div>
                     @endforeach
+                </div>
+                <div class="mt-4">
+                    {{ $products->withQueryString()->links() }}
                 </div>
             </div>
         </div>

@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $query = Product::query();
+
+        if ($request->has('search')) {
+            $query->where('name', 'like', "%{$request->search}%");
+        }
+
+        $products = $query->paginate(12);
         $cart = session()->get('cart', []);
         return view('pos.index', compact('cart', 'products'));
     }

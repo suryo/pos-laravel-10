@@ -10,9 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $transactions = Transaction::latest()->paginate(10);
+        $query = Transaction::latest();
+
+        if ($request->has('search')) {
+            $query->where('id', $request->search);
+        }
+
+        $transactions = $query->paginate(10);
         return view('transactions.index', compact('transactions'));
     }
 

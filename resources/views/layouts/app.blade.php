@@ -22,6 +22,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ route('pos.index') }}">POS</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('products.index') }}">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('customers.index') }}">Customers</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('transactions.index') }}">Transactions</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('reports.index') }}">Reports</a></li>
                 </ul>

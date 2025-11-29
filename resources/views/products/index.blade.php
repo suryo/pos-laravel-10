@@ -4,7 +4,13 @@
 <div class="card">
     <div class="card-header bg-white d-flex justify-content-between align-items-center">
         <h4 class="mb-0">Products</h4>
-        <a href="{{ route('products.create') }}" class="btn btn-primary">Add Product</a>
+        <div class="d-flex gap-2">
+            <form action="{{ route('products.index') }}" method="GET" class="d-flex">
+                <input type="text" name="search" class="form-control me-2" placeholder="Search..." value="{{ request('search') }}">
+                <button type="submit" class="btn btn-outline-primary">Search</button>
+            </form>
+            <a href="{{ route('products.create') }}" class="btn btn-primary">Add Product</a>
+        </div>
     </div>
     <div class="card-body">
         <table class="table table-bordered">
@@ -46,7 +52,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $products->links() }}
+        {{ $products->withQueryString()->links() }}
     </div>
 </div>
 @endsection

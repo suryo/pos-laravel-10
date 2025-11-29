@@ -17,12 +17,14 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return redirect()->route('pos.index');
 });
 
 Route::resource('products', ProductController::class);
+Route::resource('customers', CustomerController::class);
 
 Route::get('/pos', [CartController::class, 'index'])->name('pos.index');
 Route::get('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');

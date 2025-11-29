@@ -2,8 +2,12 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header bg-white">
+    <div class="card-header bg-white d-flex justify-content-between align-items-center">
         <h4 class="mb-0">Transactions</h4>
+        <form action="{{ route('transactions.index') }}" method="GET" class="d-flex">
+            <input type="text" name="search" class="form-control me-2" placeholder="Search ID..." value="{{ request('search') }}">
+            <button type="submit" class="btn btn-outline-primary">Search</button>
+        </form>
     </div>
     <div class="card-body">
         <table class="table table-bordered">
@@ -32,7 +36,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $transactions->links() }}
+        {{ $transactions->withQueryString()->links() }}
     </div>
 </div>
 @endsection
