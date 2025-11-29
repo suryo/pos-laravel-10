@@ -54,5 +54,11 @@ class DatabaseSeeder extends Seeder
             $transaction->change_amount = $transaction->paid_amount - $total_amount;
             $transaction->save();
         });
+        
+        // Seed Shippings
+        $this->call(ShippingSeeder::class);
+        
+        // Seed Coupons
+        $this->call(CouponSeeder::class);
     }
 }
